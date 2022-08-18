@@ -1,15 +1,16 @@
-//  node server
-const http = require("http");
-const socketIO = require("socket.io");
+'use strict';
 
-const httpServer = http.createServer();
-const io = new socketIO.Server(httpServer, {
-  cors: {
-    origin: "*"
-  }
-});
+const express = require('express');
+const socketIO = require('socket.io');
 
-httpServer.listen(8000, ()=>{console.log("server started")});
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const io = socketIO(server);
 
 const users = {} ;
 
