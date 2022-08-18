@@ -12,6 +12,8 @@ const server = express()
 .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
 .use((req, res) => res.sendFile(CSS, { root: __dirname }))
 .use((req, res) => res.sendFile(JS, { root: __dirname }))
+.use((req, res) => res.sendFile('/logo.png.png', { root: __dirname }))
+.use((req, res) => res.sendFile('/tune.mp3.mp3', { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 const io = socketIO(server);
