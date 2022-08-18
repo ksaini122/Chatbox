@@ -1,4 +1,4 @@
-const socket=io('http://chat-box-x.herokuapp.com');
+const socket=io('https://chat-box-x.herokuapp.com');
 
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
