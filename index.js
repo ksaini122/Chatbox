@@ -4,12 +4,11 @@ const express = require('express');
 const socketIO = require('socket.io');
 
 const PORT = process.env.PORT || 3000;
-const INDEX = '/index.html';
 
 const server = express()
 .use(express.static(__dirname + '/public/css'))
 .use(express.static(__dirname + '/public/js'))
-.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+.get('/', (req,res)=>res.sendFile(__dirname+'/public/index.html'))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 const io = socketIO(server);
