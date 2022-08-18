@@ -8,7 +8,8 @@ const PORT = process.env.PORT || 3000;
 const server = express()
 .use(express.static(__dirname + '/public/css'))
 .use(express.static(__dirname + '/public/js'))
-.get('/', (req,res)=>res.sendFile(__dirname+'/public/index.html'))
+.use(express.static(__dirname + '/public'))
+// .get('/', (req,res)=>res.sendFile(__dirname+'/public/index.html'))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 const io = socketIO(server);
